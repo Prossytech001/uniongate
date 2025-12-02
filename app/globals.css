@@ -1,26 +1,22 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+
+
+
+:root{
+  --darkgreen: #114a43;
+  --lemon:#d8e28c;
+  --headtext:#14202e;
+  --ptext:#828282;
+  --white:#ffffff;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* helper input style to match the reference */
+.input {
+  @apply w-full h-12 px-4 rounded-lg border border-gray-300 bg-white text-[15px] outline-none transition;
 }
+.input:focus { @apply border-[var(--darkgreen)] ring-2 ring-[var(--darkgreen)]/10; }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.card {
+  @apply w-full max-w-2xl bg-white shadow-xl rounded-2xl p-8;
 }
