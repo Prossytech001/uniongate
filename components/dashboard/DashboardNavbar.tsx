@@ -44,11 +44,25 @@ export default function DashboardNavbar({ onMenuClick }: { onMenuClick: () => vo
     ">
       
       {/* Mobile Menu Button */}
-      <button onClick={onMenuClick} className="lg:hidden p-2 rounded hover:bg-gray-100">
-        <svg width="26" height="26" fill="currentColor">
+      {/* <button onClick={onMenuClick} className="lg:hidden p-2 rounded hover:bg-gray-100">
+        <svg width="26" height="26" fill="currentColor" className="text-gray-600">
           <path d="M3 6h18M3 12h18M3 18h18"/>
         </svg>
-      </button>
+      </button> */}
+      <button onClick={onMenuClick} className="lg:hidden p-2 rounded hover:bg-gray-100">
+  <svg 
+    width="26" 
+    height="26" 
+    stroke="currentColor" 
+    strokeWidth="2" 
+    className="text-gray-600"
+    fill="none"
+    strokeLinecap="round"
+  >
+    <path d="M3 6h18M3 12h18M3 18h18"/>
+  </svg>
+</button>
+
 
       {/* Left empty space for desktop layout symmetry */}
       <div className="hidden lg:block w-6"></div>
