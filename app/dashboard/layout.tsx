@@ -4,6 +4,7 @@ import DashboardSidebar from "../../components/dashboard/DashboardSidebar";
 import DashboardNavbar from "../../components/dashboard/DashboardNavbar";
 import MobileMenu from "../../components/dashboard/MobileMenu";
 import { useState } from "react";
+import BottomNav from "@/components/BottomNav";
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -24,7 +25,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         </aside>
 
         {/* Page Content */}
-        <main className="flex-1 p-6 bg-[var(--bgwhite)]">{children}</main>
+        <main className="flex-1 p-6 bg-[var(--bgwhite)]">{children}
+          <BottomNav onMenuToggle={() => setMenuOpen(!menuOpen)} />
+        </main>
       </div>
     </div>
   );

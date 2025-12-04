@@ -122,52 +122,184 @@
 //     </div>
 //   );
 // }
+// "use client";
+// import {
+//   LayoutDashboard, ReceiptText, CreditCard, Send, Globe,
+//   PiggyBank, HandCoins, FileSearch, History, Settings, LifeBuoy, LogOut, User2, Bell
+// } from "lucide-react";
+// import Link from "next/link";
+
+// const menu = [
+//   { title: "Dashboard", icon: LayoutDashboard ,href: "/dashboard/home" },
+//   { title: "Transactions", icon: ReceiptText , href: "/dashboard/home"},
+//   { title: "Cards", icon: CreditCard ,href: "/dashboard/cards"},
+
+//   { title: "Local Transfer", icon: Send, section: "TRANSFERS" ,href: "/dashboard/local-transfer"},
+//   { title: "International Wire", icon: Globe ,href: "/dashboard/wire-transfer"},
+//   { title: "Deposit", icon: PiggyBank ,href: "/dashboard/home"},
+
+  
+//   { title: "Loan Request", icon: FileSearch,href: "/dashboard/loans" },
+//   { title: "IRS Tax Refund", icon: FileSearch ,href: "/dashboard/home"},
+//   { title: "Loan History", icon: History ,href: "/dashboard/refund"},
+
+//   { title: "Settings", icon: Settings, section: "ACCOUNT" ,href: "/dashboard/home"},
+//   { title: "Support Ticket", icon: LifeBuoy,href: "/dashboard/home" },
+// ];
+
+// export default function DashboardSidebar() {
+//   return (
+//     <div className="h-[100vh] fixed  bg-white overflow-auto  p-4 pb-20 z-45">
+      
+//       {/* User Card */}
+//       <div className="bg-[#F3F8E6] rounded-xl p-4 mb-6">
+//         <div className="flex items-center gap-3">
+//           <div className="w-12 h-12 bg-[#E4F5BD] rounded-full flex justify-center items-center font-semibold">
+//             RO
+//           </div>
+
+//           <div>
+//             <p className="font-semibold text-gray-800">Roland Onyekwere</p>
+//             <p className="text-xs text-gray-500">ID: 8658910866</p>
+//           </div>
+//         </div>
+
+//         <button className="mt-3 w-full bg-red-100 text-red-600 py-1 rounded-md text-sm">
+//           ● Verify KYC
+//         </button>
+
+//         <button className="mt-2 w-full bg-gray-900 text-white py-2 rounded-md text-sm">
+//           Logout
+//         </button>
+//       </div>
+
+//       {/* Menu */}
+//       <div>
+//         {menu.map((item, i) => (
+//           <div key={i} className="mb-3">
+//             {/* Section Title */}
+//             {item.section && (
+//               <p className="text-xs text-gray-400 mt-4 mb-1">{item.section}</p>
+//             )}
+//           <Link key={item.title} href={item.href}>
+//             <button className="flex items-center gap-3 w-full text-gray-700 hover:text-black py-2">
+//              <item.icon size={20} className="text-[var(--headtext)]" />
+
+//               {item.title}
+//             </button>
+//             </Link>
+//           </div>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// }
 "use client";
+
+import { useEffect, useState } from "react";
 import {
   LayoutDashboard, ReceiptText, CreditCard, Send, Globe,
-  PiggyBank, HandCoins, FileSearch, History, Settings, LifeBuoy, LogOut, User2, Bell
+  PiggyBank, HandCoins, FileSearch, History, Settings,
+  LifeBuoy, LogOut
 } from "lucide-react";
+import Link from "next/link";
 
 const menu = [
-  { title: "Dashboard", icon: LayoutDashboard },
-  { title: "Transactions", icon: ReceiptText },
-  { title: "Cards", icon: CreditCard },
+  { title: "Dashboard", icon: LayoutDashboard, href: "/dashboard/home" },
+  { title: "Transactions", icon: ReceiptText, href: "/dashboard/home" },
+  { title: "Cards", icon: CreditCard, href: "/dashboard/cards" },
 
-  { title: "Local Transfer", icon: Send, section: "TRANSFERS" },
-  { title: "International Wire", icon: Globe },
-  { title: "Deposit", icon: PiggyBank },
+  { title: "Local Transfer", icon: Send, section: "TRANSFERS", href: "/dashboard/local-transfer" },
+  { title: "International Wire", icon: Globe, href: "/dashboard/wire-transfer" },
+  { title: "Deposit", icon: PiggyBank, href: "/dashboard/home" },
 
-  { title: "Save and Invest", icon: HandCoins, section: "SERVICES" },
-  { title: "Loan Request", icon: FileSearch },
-  { title: "IRS Tax Refund", icon: FileSearch },
-  { title: "Loan History", icon: History },
+  { title: "Loan Request", icon: FileSearch, href: "/dashboard/loans" },
+  { title: "IRS Tax Refund", icon: FileSearch, href: "/dashboard/refund" },
+  { title: "Loan History", icon: History, href: "/dashboard/loan-history" },
 
-  { title: "Settings", icon: Settings, section: "ACCOUNT" },
-  { title: "Support Ticket", icon: LifeBuoy },
+  { title: "Settings", icon: Settings, section: "ACCOUNT", href: "/dashboard/settings" },
+  { title: "Support Ticket", icon: LifeBuoy, href: "/dashboard/support" }
 ];
 
 export default function DashboardSidebar() {
+  const [data, setData] = useState<any>(null);
+
+  const token = typeof window !== "undefined" ? localStorage.getItem("token") : "";
+
+  useEffect(() => {
+    if (!token) return;
+
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/me`, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+      .then(res => res.json())
+      .then(setData)
+      .catch(console.error);
+  }, [token]);
+
+  if (!data) return null;
+
+  // const user = data.user;
+  // const account = data.account;
+
+  // // Generate initials (e.g., Roland Onyekwere → RO)
+  // const initials = user.fullName
+  //   .split(" ")
+  //   .map((n: string) => n[0])
+  //   .join("")
+  //   .toUpperCase();
+  const user = data?.user || {};
+const account = data?.account || {};
+
+const fullName =
+  user.fullName ||
+  `${user?.personalInfo?.legalFirstName || ""} ${
+    user?.personalInfo?.middleName || ""
+  } ${user?.personalInfo?.legalLastName || ""}`.trim();
+
+    const initials = fullName
+     .split(" ")
+      .map((n: string) => n[0])
+     .join("")
+     .toUpperCase();
+
+
   return (
-    <div className="h-[100vh] fixed  bg-white overflow-auto  p-4 pb-20 z-45">
+    <div className="h-[100vh] fixed bg-white overflow-auto p-4 pb-20 z-45 w-64 border-r">
       
       {/* User Card */}
       <div className="bg-[#F3F8E6] rounded-xl p-4 mb-6">
         <div className="flex items-center gap-3">
-          <div className="w-12 h-12 bg-[#E4F5BD] rounded-full flex justify-center items-center font-semibold">
-            RO
+          <div className="w-12 h-12 bg-[#E4F5BD] rounded-full flex justify-center items-center font-semibold text-gray-800">
+            {initials}
           </div>
 
           <div>
-            <p className="font-semibold text-gray-800">Roland Onyekwere</p>
-            <p className="text-xs text-gray-500">ID: 8658910866</p>
+            <p className="font-semibold text-gray-800">{data.fullName}</p>
+<p className="text-xs text-gray-500">Account: {data.accountNumber}</p>
+<div className="w-12 h-12 ...">{data.initials}</div>
           </div>
         </div>
 
-        <button className="mt-3 w-full bg-red-100 text-red-600 py-1 rounded-md text-sm">
-          ● Verify KYC
-        </button>
+        {/* KYC Status Button */}
+        {data.kycCompleted ? (
+  <button className="mt-3 w-full bg-green-100 text-green-700 py-1 rounded-md text-sm">
+    ✓ KYC Verified
+  </button>
+) : (
+  <button className="mt-3 w-full bg-red-100 text-red-600 py-1 rounded-md text-sm">
+    ● Verify KYC
+  </button>
+)}
 
-        <button className="mt-2 w-full bg-gray-900 text-white py-2 rounded-md text-sm">
+
+        <button
+          className="mt-2 w-full bg-gray-900 text-white py-2 rounded-md text-sm"
+          onClick={() => {
+            localStorage.removeItem("token");
+            window.location.href = "/login";
+          }}
+        >
           Logout
         </button>
       </div>
@@ -176,16 +308,17 @@ export default function DashboardSidebar() {
       <div>
         {menu.map((item, i) => (
           <div key={i} className="mb-3">
-            {/* Section Title */}
+            {/* Section Header */}
             {item.section && (
               <p className="text-xs text-gray-400 mt-4 mb-1">{item.section}</p>
             )}
 
-            <button className="flex items-center gap-3 w-full text-gray-700 hover:text-black py-2">
-             <item.icon size={20} className="text-[var(--headtext)]" />
-
-              {item.title}
-            </button>
+            <Link href={item.href}>
+              <button className="flex items-center gap-3 w-full text-gray-700 hover:text-black py-2">
+                <item.icon size={20} className="text-[var(--headtext)]" />
+                {item.title}
+              </button>
+            </Link>
           </div>
         ))}
       </div>
