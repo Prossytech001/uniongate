@@ -53,7 +53,7 @@ export default function TransactionsPage() {
     });
 
   return (
-    <div className="pt-6 pb-6 h-screen max-w-3xl mx-auto">
+    <div className="pt-6 pb-6 h-screen overflow-y-scroll max-w-3xl mx-auto">
 
       {/* Page Header */}
       <h1 className="text-2xl font-bold text-[var(--headtext)]">Transactions</h1>
@@ -80,7 +80,7 @@ export default function TransactionsPage() {
       </div>
 
       {/* Transaction List */}
-      <div className="space-y-4">
+      <div className="space-y-4 overflow-y-scroll ">
         {filtered.length === 0 && (
           <p className="text-center text-[var(--ptext)] mt-10">
             No transactions found.
@@ -90,7 +90,7 @@ export default function TransactionsPage() {
         {filtered.map((tx: any) => (
           <div
             key={tx._id}
-            className="bg-white shadow p-4 rounded-xl border flex items-center justify-between"
+            className="bg-white shadow p-4 rounded-xl flex items-center justify-between"
           >
             {/* Left */}
             <div className="flex items-center gap-3">

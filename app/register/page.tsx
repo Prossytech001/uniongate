@@ -366,7 +366,7 @@ const [nextToken, setNextToken] = useState<string | null>(null);
 />
 
         )} */}
-      {step === 2 && !showVerify && (
+        {step === 2 && !showVerify && (
   <ContactDetails
     data={data}
     setField={setField}
