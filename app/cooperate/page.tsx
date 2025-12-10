@@ -1,6 +1,8 @@
 import BusinessHero from "@/components/BusinessHero";
 import BusinessGrowthSection from "@/components/BusinessGrowthSection";
 import ExpertiseSection from "@/components/ExpertiseSection";
+import CtaSection from "@/components/CTASection";
+import Footer from "@/components/Footer";
 
 
 
@@ -10,6 +12,7 @@ export default function PersonalPage() {
     <BusinessHero/>
     <BusinessGrowthSection/>
     <ExpertiseSection/>
+    <CtaSection/>
 
       {/* Other sections for Personal page can go under here */}
       <section className="py-20 px-6">
@@ -18,6 +21,7 @@ export default function PersonalPage() {
           This is where you add more content for the personal page...
         </p>
       </section>
+      <Footer/> 
     </div>
   );
 }

@@ -4,6 +4,7 @@ import {
   User, Lock, KeyRound, Bell, Image, LogOut, FileText, Smartphone, ChevronRight 
 } from "lucide-react";
 import { useEffect, useState } from "react";
+import CubeLoader from "@/components/FullPageLoader";
 
 export default function SettingsPage() {
   const [user, setUser] = useState<any>(null);
@@ -21,7 +22,7 @@ export default function SettingsPage() {
       .catch(console.error);
   }, [token]);
 
-  if (!user) return <div className="p-6">Loading...</div>;
+  if (!user) return <div className="p-6"><CubeLoader/></div>;
 
   const initials = `${user.firstName?.charAt(0)}${user.lastName?.charAt(0)}`;
 

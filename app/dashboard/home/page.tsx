@@ -14,7 +14,7 @@ import {
   ShieldCheck
 } from "lucide-react";
 import Link from "next/link";
-import CubeLoader from "@/components/CubeLoader";
+import CubeLoader from "@/components/FullPageLoader";
 
 export default function DashboardHome() {
   const [data, setData] = useState<any>(null);
@@ -120,7 +120,7 @@ function HistoryIcon() {
             <Wallet size={130} />
           </div>
 
-          <p className="text-xl font-medium">Good Morning</p>
+          <p className="text-xl font-medium">Welcome</p>
           <h2 className="text-2xl font-semibold">{user.fullName}</h2>
 
           <div className="mt-6">
@@ -135,9 +135,14 @@ function HistoryIcon() {
 
           {/* --- ACTION BUTTONS --- */}
           <div className="mt-6 grid grid-cols-3 gap-3">
-            <ActionButton icon={<ArrowDown />} text="Receive" />
-            <ActionButton icon={<ArrowUp />} text="Send" />
-            <ActionButton icon={<RefreshCw />} text="Swap" />
+           
+            <ActionButton icon={<ArrowDown />} text="Transfer" link="/local-transfer" />
+            
+            <ActionButton icon={<ArrowUp />} text="Send" link="/wire-transfer"/>
+            
+            
+            <ActionButton icon={<PlusIcon />} text="Deposit" link="/deposit" />
+            
           </div>
 
           {/* --- ACCOUNT NUMBER --- */}
@@ -164,6 +169,7 @@ function HistoryIcon() {
       icon={<BuildingIcon />} 
       label="Account Info" 
       gradient="from-gray-100 to-gray-200"
+      
     />
     </Link>
     <Link href="/dashboard/local-transfer">
@@ -353,12 +359,14 @@ function SummaryCard({ title, value, gradient, icon }: any) {
   );
 }
 
-function ActionButton({ icon, text }: any) {
+function ActionButton({ icon, text,link }: any) {
   return (
-    <button className="bg-white/10 backdrop-blur text-white py-3 rounded-lg flex flex-col items-center hover:bg-white/20 transition">
+    <Link href={link} className="bg-white/10 backdrop-blur text-white py-3 rounded-lg flex flex-col items-center hover:bg-white/20 transition">
+    <button >
       {icon}
       <span className="mt-1">{text}</span>
     </button>
+    </Link>
   );
 }
 

@@ -179,6 +179,7 @@ import {
   Eye,
   Loader
 } from "lucide-react";
+import CubeLoader from "@/components/FullPageLoader";
 
 export default function CardsPage() {
   const [cards, setCards] = useState<any[]>([]);
@@ -246,7 +247,7 @@ export default function CardsPage() {
   if (loading)
     return (
       <div className="p-6 flex justify-center py-20">
-        <Loader size={30} className="animate-spin" />
+        <CubeLoader/>
       </div>
     );
 

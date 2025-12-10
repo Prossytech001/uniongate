@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { SendHorizonal, User, ArrowRight, DollarSign, Loader } from "lucide-react";
+import CubeLoader from "@/components/FullPageLoader";
 
 type VerifyResp = { name?: string; error?: string };
 
@@ -74,7 +75,7 @@ export default function LocalTransferPage() {
   if (loading) {
     return (
       <div className="p-6 flex justify-center py-20">
-        <Loader className="animate-spin" />
+        <CubeLoader/>
       </div>
     );
   }

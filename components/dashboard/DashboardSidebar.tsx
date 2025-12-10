@@ -92,9 +92,9 @@ const fullName =
     ✓ KYC Verified
   </button>
 ) : (
-  <button className="mt-3 w-full bg-green-100 text-green-700 py-1 rounded-md text-sm">
+  <Link href="/verify-account" className="mt-3 w-full bg-red-200 text-red-400  py-1 rounded-md text-sm">
     ● Verify KYC
-  </button>
+  </Link>
 )}
 
 

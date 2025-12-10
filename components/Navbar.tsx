@@ -268,8 +268,14 @@ export default function Navbar() {
                     <Link href="/loans" className="block px-4 py-2 hover:bg-gray-100">
                       Business loan
                     </Link>
-                    <Link href="/savings/account2" className="block px-4 py-2 hover:bg-gray-100">
-                      Savings Plan 2
+                    <Link href="/about" className="block px-4 py-2 hover:bg-gray-100">
+                      About us
+                    </Link>
+                    <Link href="/contact" className="block px-4 py-2 hover:bg-gray-100">
+                      Contact us
+                    </Link>
+                    <Link href="/terms" className="block px-4 py-2 hover:bg-gray-100">
+                      Privacy & Policy
                     </Link>
                   </motion.div>
                 )}
@@ -339,6 +345,15 @@ export default function Navbar() {
                 <div className="font-semibold mt-4">Sefton Savings</div>
                 <Link href="/loans">Business Loan</Link>
                 <Link href="/savings/account2">Savings Plan 2</Link>
+                <Link href="/about" >
+                      About us
+                    </Link>
+                    <Link href="/contact" >
+                      Contact us
+                    </Link>
+                    <Link href="/terms" >
+                      Privacy & Policy
+                    </Link>
 
                 <Link href="/login "
                 className="block  bg-[var(--darkgreen)]  text-[var(--lemon)] text-center py-3 rounded-full font-medium">Login</Link>

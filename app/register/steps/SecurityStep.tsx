@@ -138,7 +138,7 @@ export default function SecurityStep({
 
       // Save final authenticated token
       localStorage.setItem("token", json.token);
-      window.location.href = "/verify-account";
+      window.location.href = "/dashboard/home";
 
     } catch (e: any) {
       setErr(e.message);

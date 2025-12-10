@@ -12,7 +12,9 @@ export default function NavbarController() {
     "/dashboard",
     "/admin",
     "/verify-account",
-    "kyc"
+    "/kyc",
+    "/forgot-password",
+    "/reset-password"
   ];
 
   const hideNavbar = noNavbarRoutes.some((route) =>
