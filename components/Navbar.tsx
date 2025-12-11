@@ -225,10 +225,10 @@ export default function Navbar() {
 
       {/* NAVBAR WRAPPER */}
       <nav
-        className={`absolute top-[36px] left-0 w-full z-50 transition-all duration-300 ${
+        className={`absolute top-[36px] py-4 left-0 w-full z-50 transition-all duration-300 ${
           scrolled
             ? ""
-            : "backdrop-blur-md text-white"
+            : "text-white"
         }`}
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between py-5 px-6">
@@ -238,7 +238,7 @@ export default function Navbar() {
             <Image
               src="https://res.cloudinary.com/dfnt0w2mn/image/upload/v1764679739/Abstract_Alexander_Fencing_and_Gates_Fence_Logo_-_1_-_Edited-removebg-preview_ubhqf6.png"
               alt="Logo"
-              width={100}
+              width={150}
               height={60}
               priority
               className={`${scrolled ? "" : "invert-0"}`}

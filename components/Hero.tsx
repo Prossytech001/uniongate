@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-    <section className="bg-[var(--darkgreen)] text-white py-16">
+    <section className="bg-[var(--darkgreen)] text-white py-26">
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 px-6 items-center">
 
         {/* LEFT TEXT BLOCK */}
