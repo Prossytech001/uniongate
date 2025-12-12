@@ -66,12 +66,12 @@ export default function VerifyAccountPage() {
                   <svg width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12c5.16-1.26 9-6.45 9-12V5z"/></svg>
                 </div>
                 <div>
-                  <div className="font-semibold">Welcome to Swiss Community Bank</div>
+                  <div className="font-semibold">Welcome to Union gate Bank</div>
                   <p className="text-sm text-[var(--ptext)]">
                     Complete your account verification to access all features.
                   </p>
                   <div className="mt-3 text-sm leading-relaxed text-[var(--headtext)]/80">
-                    <p><b>Dear Roland Onyekwere david,</b></p>
+                    
                     <p className="mt-2">
                       Welcome Onboard! ... Please review our terms and conditions below before proceeding.
                     </p>
